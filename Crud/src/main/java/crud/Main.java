@@ -1,13 +1,14 @@
 package crud;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
 	public static void main(String[] args) {
-		exemploPersist();
-		exemploSelect();
-		exemploUpdate();
+		//exemploPersist();
+		//exemploSelect();
+		//exemploUpdate();
 		exemploDelete();
 	}
 	
@@ -20,18 +21,19 @@ public class Main {
 	}
 	
 	public static void exemploSelect() {
-		Aluno cliente_bd = AlunoDAO.getInstance().getById(12);
+		List<Aluno> listaAlunos = AlunoDAO.getInstance().selectHql("Maria");
 	}
 	
 	public static void exemploUpdate() {
-		Aluno cliente_bd = AlunoDAO.getInstance().getById(12);
-		cliente_bd.setNome("Joao");
-		Aluno cliente_atualizado = AlunoDAO.getInstance().update(cliente_bd);
+		//Aluno aluno_bd = AlunoDAO.getInstance().getById(12);
+		Aluno aluno = new Aluno();
+		aluno.setMatricula(12);
+		aluno.setNome("Pedro");
+		Aluno aluno_atualizado = AlunoDAO.getInstance().update(aluno);
 	}
 	
 	public static void exemploDelete() {
-		Aluno cliente_bd = AlunoDAO.getInstance().getById(12);
-		AlunoDAO.getInstance().remove(cliente_bd);
+		AlunoDAO.getInstance().removeById(12);
 	}
 
 }
